@@ -10,7 +10,8 @@
     "requirements": "python3 -m pip freeze > requirements.txt",
     "install-requirements": "pip install -r requirements.txt",
     "watch": "sass static/scss/style.scss static/css/style.css --watch",
-    "build": "sass static/scss/style.scss static/css/style.css"
+    "build": "sass static/scss/style.scss static/css/style.css",
+    "purge-css": "sass static/scss/style.scss static/css/style.css && postcss static/css/style.css -o static/css/style.css"
   },
   "keywords": [
     "Phishing",
@@ -35,5 +36,11 @@
   "bugs": {
     "url": "https://github.com/Armoghans-Organization/Phish-Master/issues"
   },
-  "homepage": "https://github.com/Armoghans-Organization/Phish-Master#readme"
+  "homepage": "https://github.com/Armoghans-Organization/Phish-Master#readme",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.77.2"
+  }
 }
