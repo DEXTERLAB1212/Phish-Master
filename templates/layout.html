@@ -19,7 +19,8 @@
   <link rel="manifest" href="{{ url_for('static', filename='icons/favicons/site.webmanifest') }}">
 
   <!-- Title -->
-  <title>Phish Master | {{title}}</title>
+
+  <title>Phish Master | {% block title %} {% endblock %}</title>
 </head>
 
 <body>
