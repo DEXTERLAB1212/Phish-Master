@@ -1,0 +1,13 @@
+{
+  "name": "phish-master",
+  "version": "1.0.0",
+  "description": "Phishing Tool for educational purposes.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Armoghan-ul-Mohmin",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
