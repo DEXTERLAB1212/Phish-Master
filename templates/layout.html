@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <!-- Fav Icon  -->
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicons/favicon.ico') }}">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="{{ url_for('static', filename='icons/favicons/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="{{ url_for('static', filename='icons/favicons/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="{{ url_for('static', filename='icons/favicons/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='icons/favicons/site.webmanifest') }}">
+
+  <!-- Title -->
+  <title>Phish Master | {{title}}</title>
+</head>
+
+<body>
+  <!-- Body Content Starts -->
+
+  {% block body %} {% endblock %}
+
+  <!-- Body Content Ends -->
+
+  <!-- Main Js -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <!-- Bootstrap Js -->
+  <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.bundle.js') }}"></script>
+</body>
+
+</html>
