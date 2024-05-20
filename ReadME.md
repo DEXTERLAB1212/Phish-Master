@@ -3,6 +3,10 @@
 
 ![logo](logo.png)
 
+[![🐍 Pylint](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/pylint.yml/badge.svg)](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/pylint.yml)
+[![🔍 CodeQL](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/codeql.yml/badge.svg)](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/codeql.yml)
+[![💬 Community Engagement](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/community_engagement.yml/badge.svg)](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/community_engagement.yml)
+[![🔒 Lock Closed Issues](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/lock.yml/badge.svg)](https://github.com/Armoghans-Organization/Phish-Master/actions/workflows/lock.yml)
 [![GitHub](https://img.shields.io/github/license/Armoghans-Organization/Phish-Master)](https://github.com/Armoghans-Organization/Phish-Master/blob/main/LICENSE)
 ![code-size](https://img.shields.io/github/languages/code-size/Armoghans-Organization/Phish-Master)
 
