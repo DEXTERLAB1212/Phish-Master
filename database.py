@@ -6,6 +6,10 @@ from sqlalchemy import inspect
 from utils.color import color
 from utils.banner import banner
 from utils.dots import dots
+# Import the models
+from models.users.user import User
+from models.info.info import Info
+
 
 # Get the current working directory
 cwd = os.getcwd()
@@ -17,9 +21,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy with the Flask app
 db = SQLAlchemy(app)
-
-# Import the User model from the correct location
-from models.users.user import User
 
 # Print banner
 banner.print_banner()
@@ -62,20 +63,20 @@ except Exception as e:
 # Check if the User table has any entries
 def user_table_has_entry():
     return db.session.query(User.id).first() is not None
-  
+
 # Create new User 
 def create_user():
-  # Get user input for username and password
-  print()
-  username = input(color.ColorPrinter.cyan("Enter Username: "))
-  print()
-  password = getpass.getpass(color.ColorPrinter.cyan("Enter Password: "))
-  # Create a User instance and add it to the database
-  user = User(username=username, password=password)
-  db.session.add(user)
-  db.session.commit()
-  print()
-  print(color.ColorPrinter.green("New User Created Successfully"))
+    # Get user input for username and password
+    print()
+    username = input(color.ColorPrinter.cyan("Enter Username: "))
+    print()
+    password = getpass.getpass(color.ColorPrinter.cyan("Enter Password: "))
+    # Create a User instance and add it to the database
+    user = User(username=username, password=password)
+    db.session.add(user)
+    db.session.commit()
+    print()
+    print(color.ColorPrinter.green("New User Created Successfully"))
 
 with app.app_context():
     if user_table_has_entry():
@@ -90,3 +91,21 @@ with app.app_context():
             print(color.ColorPrinter.yellow("No new user created."))
     else:
         create_user()
+
+# Create the Info table if it doesn't exist
+try:
+    with app.app_context():
+        inspector = inspect(db.engine)
+        if 'info' not in inspector.get_table_names():
+            # Explicitly create the User table
+            Info.__table__.create(db.engine)
+            print()
+            print(color.ColorPrinter.magenta("Creating Info Table"), end=" ")
+            dots.print_dots(10)
+            print()
+            print(color.ColorPrinter.green("Info Table Created Successfully"))
+        else:
+            print()
+            print(color.ColorPrinter.yellow("Info Table already exists"))
+except Exception as e:
+    print(color.ColorPrinter.red(f"Error creating Info table: {e}"))
