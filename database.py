@@ -9,6 +9,7 @@ from utils.dots import dots
 # Import the models
 from models.users.user import User
 from models.info.info import Info
+from models.media.media import Media
 
 
 # Get the current working directory
@@ -97,7 +98,7 @@ try:
     with app.app_context():
         inspector = inspect(db.engine)
         if 'info' not in inspector.get_table_names():
-            # Explicitly create the User table
+            # Explicitly create the Info table
             Info.__table__.create(db.engine)
             print()
             print(color.ColorPrinter.magenta("Creating Info Table"), end=" ")
@@ -109,3 +110,21 @@ try:
             print(color.ColorPrinter.yellow("Info Table already exists"))
 except Exception as e:
     print(color.ColorPrinter.red(f"Error creating Info table: {e}"))
+    
+# Create the Media table if it doesn't exist
+try:
+    with app.app_context():
+        inspector = inspect(db.engine)
+        if 'media' not in inspector.get_table_names():
+            # Explicitly create the edia table
+            Media.__table__.create(db.engine)
+            print()
+            print(color.ColorPrinter.magenta("Creating Media Table"), end=" ")
+            dots.print_dots(10)
+            print()
+            print(color.ColorPrinter.green("Media Table Created Successfully"))
+        else:
+            print()
+            print(color.ColorPrinter.yellow("Media Table already exists"))
+except Exception as e:
+    print(color.ColorPrinter.red(f"Error creating Media table: {e}"))
