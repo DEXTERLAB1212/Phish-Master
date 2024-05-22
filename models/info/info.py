@@ -1,15 +1,14 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-
-db = SQLAlchemy()
+from ..creds.creds import db
 
 # Define the Info model
 class Info(db.Model):
     __tablename__ = 'info'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    ip = db.Column(db.String(50), nullable=False)
+    username = db.Column(db.String(100), db.ForeignKey('creds.username'), nullable=False)
+    ip = db.Column(db.String(50), db.ForeignKey('creds.ip'), nullable=False)
     browser = db.Column(db.String(100), nullable=False)
     geolocation_longitude = db.Column(db.Float, nullable=True)
     geolocation_latitude = db.Column(db.Float, nullable=True)
@@ -64,9 +63,6 @@ class Info(db.Model):
     dns_prefetching = db.Column(db.Boolean, nullable=False, default=False)
     tcp_connection_count = db.Column(db.Integer, nullable=True)
     udp_connection_count = db.Column(db.Integer, nullable=True)
-
-    def __repr__(self):
-        return f"Info(name='{self.name}', ip='{self.ip}', browser='{self.browser}')"
 
     def __repr__(self):
         return f"Info(name='{self.name}', ip='{self.ip}', browser='{self.browser}')"
