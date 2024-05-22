@@ -10,6 +10,7 @@ from utils.dots import dots
 from models.users.user import User
 from models.info.info import Info
 from models.media.media import Media
+from models.creds.creds import Creds
 
 
 # Get the current working directory
@@ -116,7 +117,7 @@ try:
     with app.app_context():
         inspector = inspect(db.engine)
         if 'media' not in inspector.get_table_names():
-            # Explicitly create the edia table
+            # Explicitly create the Media table
             Media.__table__.create(db.engine)
             print()
             print(color.ColorPrinter.magenta("Creating Media Table"), end=" ")
@@ -128,3 +129,21 @@ try:
             print(color.ColorPrinter.yellow("Media Table already exists"))
 except Exception as e:
     print(color.ColorPrinter.red(f"Error creating Media table: {e}"))
+
+# Create the Creds table if it doesn't exist
+try:
+    with app.app_context():
+        inspector = inspect(db.engine)
+        if 'creds' not in inspector.get_table_names():
+            # Explicitly create the Creds table
+            Creds.__table__.create(db.engine)
+            print()
+            print(color.ColorPrinter.magenta("Creating Creds Table"), end=" ")
+            dots.print_dots(10)
+            print()
+            print(color.ColorPrinter.green("Creds Table Created Successfully"))
+        else:
+            print()
+            print(color.ColorPrinter.yellow("Creds Table already exists"))
+except Exception as e:
+    print(color.ColorPrinter.red(f"Error creating Creds table: {e}"))
